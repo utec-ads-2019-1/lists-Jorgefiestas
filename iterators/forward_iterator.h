@@ -7,22 +7,24 @@ template <typename T>
 class ForwardIterator : public Iterator<T> {
     public:
         ForwardIterator() : Iterator<T>() {};
-        ForwardIterator(Node<T> *node) : Iterator<T>(node) {};
+        ForwardIterator(Node<T> *current) : Iterator<T>(current) {};
 
         ForwardIterator<T> operator=(ForwardIterator<T> other) {
-            // TODO
+			Iterator<T>::current = other.current;
+			return *this;
         }
 
         bool operator!=(ForwardIterator<T> other) {
-            // TODO
+			return Iterator<T>::current != other.current;
         }
 
         ForwardIterator<T> operator++() {
-            // TODO
+			Iterator<T>::current = Iterator<T>::current->next;
+			return Iterator<T>::current;
         }
 
         T operator*() {
-            // TODO
+			return Iterator<T>::current->data;
         }
 };
 
