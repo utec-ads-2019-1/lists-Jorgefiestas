@@ -130,17 +130,17 @@ int ForwardList<T>::size(){
 
 template <typename T>
 void ForwardList<T>::clear(){
-	while(List<T>::head != nullptr){
-		Node<T>* temp = List<T>::head->next;
-		List<T>::head->killSelf();
-		List<T>::head = temp;
-	}
-	List<T>::nodes = 0;
+    while(!empty())
+        pop_front();
 }
 
 template <typename T>
 void ForwardList<T>::sort(){
 	mergeSort(List<T>::head);
+    Node<T>* temp = List<T>::head;
+    while(temp->next)
+        temp = temp->next;
+    List<T>::tail = temp;
 }
 
 template <typename T>
