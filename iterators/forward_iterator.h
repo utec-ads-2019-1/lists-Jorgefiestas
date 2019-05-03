@@ -24,6 +24,7 @@ class ForwardIterator : public Iterator<T> {
         }
 
         T operator*() {
+            // Si la lista está vacía?
 			return Iterator<T>::current->data;
         }
 };
